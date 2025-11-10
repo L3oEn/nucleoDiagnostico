@@ -5,9 +5,11 @@ body {
     background-color: #f2f5fa;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items: flex-start;
+    min-height: 100vh;
     margin: 0;
+    padding: 40px 0;
+    overflow-y: auto;
 }
 
 /* Tarjeta del formulario */
@@ -16,7 +18,8 @@ body {
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
-    width: 400px;
+    width: 90%;
+    max-width: 420px;
     animation: fadeIn 0.3s ease;
 }
 
