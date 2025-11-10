@@ -39,6 +39,7 @@ button {
 
 button:hover {
   background-color: #003570;
+  transform: scale(1.05);
 }
 
 .menu ul {
