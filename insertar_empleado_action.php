@@ -4,13 +4,16 @@ include("conecta.php");
 $nombre = $_POST['nombre'];
 $direccion = $_POST['direccion'];
 $telefono = $_POST['telefono'];
+$fecha_nac = $_POST['fecha_nacimiento'];
 $sexo = $_POST['sexo'];
 $sueldo = $_POST['sueldo'];
 $turno = $_POST['turno'];
 $contrasena = $_POST['contrasena'];
 
 $query = "INSERT INTO empleado 
-    (nombre, direccion, telefono, sexo, sueldo, turno, fecha_nac, contrasena)
+(nombre, direccion, telefono, fecha_nac, sexo, sueldo, turno, contrasena)
+VALUES 
+('$nombre', '$direccion', '$telefono', '$fecha_nac', '$sexo', $sueldo, '$turno', '$contrasena')";
 
 $resultado = pg_query($conexion, $query);
 

@@ -12,7 +12,7 @@
       <input type="text" name="nombre" placeholder="Nombre completo" required>
       <input type="text" name="direccion" placeholder="Dirección" required>
       <input type="text" name="telefono" placeholder="Teléfono" required>
-      <input type="date" name="fecha_nac" required>
+      <input type="date" name="fecha_nacimiento" required>
       <input type="text" name="sexo" placeholder="Sexo (M/F)" required>
       <input type="number" name="sueldo" step="0.01" placeholder="Sueldo" required>
       <input type="text" name="turno" placeholder="Turno" required>
