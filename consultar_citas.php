@@ -20,6 +20,8 @@ $query = "SELECT c.id_cita, c.id_paciente, c.id_doctor, c.fecha, c.hora,
 
 
 $resultado = pg_query($conexion, $query);
+$tipo_usuario = $_SESSION['tipo'];
+$menu_destino = ($tipo_usuario === 'doctor') ? 'menu_doc.php' : 'menu.php';
 ?>
 
 
@@ -242,8 +244,7 @@ $resultado = pg_query($conexion, $query);
 
 
     <div class="btn-container">
-      <a href="menu.php" class="back-btn">
-        <span>Volver al Menú</span>
+      <a href="<?php echo $menu_destino; ?>" class="back-btn">
       </a>
     </div>
   </div>
