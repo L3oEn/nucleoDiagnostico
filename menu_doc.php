@@ -18,6 +18,10 @@ $query_pacientes = "SELECT COUNT(*) as total FROM paciente";
 $result_pacientes = pg_query($conexion, $query_pacientes);
 $total_pacientes = pg_fetch_assoc($result_pacientes)['total'];
 
+$query_medicamento = "SELECT COUNT(*) as total FROM medicamento";
+$result_medicamento = pg_query($conexion, $query_medicamento);
+$total_medicamento = pg_fetch_assoc($result_medicamento)['total'];
+
 pg_close($conexion);
 
 ?>
@@ -88,10 +92,6 @@ pg_close($conexion);
           <h2>Citas Médicas</h2>
         </div>
         <div class="menu-options">
-          <a href="insertar_cita.php" class="menu-link">
-            <i class="fas fa-calendar-plus"></i>
-            <span>Agendar Nueva Cita</span>
-          </a>
           <a href="consultar_citas.php" class="menu-link">
             <i class="fas fa-list"></i>
             <span>Ver Registro de Citas</span>
@@ -101,7 +101,7 @@ pg_close($conexion);
     </div>
 
     <!-- Medicamentos -->
-      <div class="menu-section citas">
+      <div class="menu-section medicamento">
         <div class="menu-header">
           <div class="menu-icon">
             <i class="fas fa-calendar-check"></i>
@@ -109,25 +109,27 @@ pg_close($conexion);
           <h2>Médicamentos</h2>
         </div>
         <div class="menu-options">
-          <a href="insertar_medicamento.php" class="menu-link">
-            <i class="fas fa-calendar-plus"></i>
-            <span>recetetar medicamento</span>
-          </a>
-          <a href="consultar_citas.php" class="menu-link">
+          <a href="consultar_medicamento.php" class="menu-link">
             <i class="fas fa-list"></i>
-            <span>Ver Registro de Citas</span>
+            <span>Ver inventario de medicamentos</span>
           </a>
         </div>
       </div>
     </div>
 
     <!-- Tarjetas de estadísticas con consultas dinámicas -->
+  <div class="stats-grid">
       <div class="stat-card">
         <i class="fas fa-procedures stat-icon"></i>
         <h3><?php echo $total_pacientes; ?></h3>
         <p>Pacientes Registrados</p>
       </div>
+      <div class="stat-card">
+        <i class="fas fa-pills stat-icon"></i>
+        <h3><?php echo $total_medicamento; ?></h3>
+        <p>Medicamentos en Inventario</p>
     </div>
+  </div>
   </div>
 </body>
 </html>
