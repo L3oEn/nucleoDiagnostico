@@ -50,7 +50,7 @@ $resultado = pg_query($conexion, $query);
     </table>
 
     <div class="btn-container">
-      <a href="menu.php" class="back-btn">Volver al menú</a>
+      <a href="menu_admin.php" class="back-btn">Volver al menú</a>
     </div>
   </div>
 </body>
