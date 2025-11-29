@@ -1,3 +1,9 @@
+<!-- Equipo 3
+CRISOSTO GARCIA, LIZETH MARGARITA
+DIAZ LOPEZ, IRIS VIANEY
+ENG BECERRA, LEONEL
+GUTIÉRREZ MARISCAL, AMAIRANI-->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -147,3 +153,4 @@
   </script>
 </body>
 </html>
+
