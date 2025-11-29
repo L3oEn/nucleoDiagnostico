@@ -8,8 +8,6 @@ if (!isset($_SESSION['usuario']) || !isset($_SESSION['codigo'])) {
 
 include("conecta.php");
 $resultado = pg_query($conexion, "SELECT codigo, nombre, direccion, telefono, fecha_nac, sexo, edad, estatura FROM paciente ORDER BY codigo ASC");
-$tipo_usuario = $_SESSION['tipo'];
-$menu_destino = ($tipo_usuario === 'doctor') ? 'menu_doc.php' : 'menu.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -64,7 +62,7 @@ $menu_destino = ($tipo_usuario === 'doctor') ? 'menu_doc.php' : 'menu.php';
     </div>
 
     <div class="btn-container">
-      <a href="<?php echo $menu_destino; ?>" class="back-btn">
+      <a href="menu_empleado.php" class="back-btn">
         <span>Volver al Menú</span>
       </a>
     </div>
