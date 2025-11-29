@@ -22,14 +22,24 @@ if ($codigo === "" || $contrasena === "") {
 
 function verificarLogin($conexion, $tabla, $codigo, $contrasena, $tipo) {
 
-    $query = "SELECT codigo, nombre, contrasena 
-              FROM $tabla 
-              WHERE codigo = $1 
-              LIMIT 1";
+    // SI ES ADMIN, NO SE PIDE NOMBRE
+    if ($tabla === "administrador") {
+        $query = "SELECT codigo, contrasena 
+                  FROM administrador
+                  WHERE codigo = $1 
+                  LIMIT 1";
+    } else {
+        // EMPLEADO Y DOCTOR SÍ TIENEN NOMBRE
+        $query = "SELECT codigo, nombre, contrasena 
+                  FROM $tabla 
+                  WHERE codigo = $1 
+                  LIMIT 1";
+    }
 
     $result = pg_query_params($conexion, $query, array($codigo));
 
     if ($result && pg_num_rows($result) > 0) {
+
         $user = pg_fetch_assoc($result);
 
         if (!$user["contrasena"] || trim($user["contrasena"]) === "") {
@@ -38,7 +48,11 @@ function verificarLogin($conexion, $tabla, $codigo, $contrasena, $tipo) {
 
         if (trim($user["contrasena"]) === trim($contrasena)) {
 
-            $_SESSION["usuario"] = $user["nombre"];
+            // SI ES ADMIN, NO HAY NOMBRE → SE PONE UNO POR DEFAULT
+            $_SESSION["usuario"] = ($tabla === "administrador")
+                ? "Administrador"
+                : $user["nombre"];
+
             $_SESSION["codigo"] = $user["codigo"];
             $_SESSION["tipo"] = $tipo;
             $_SESSION["login_time"] = time();
@@ -49,15 +63,26 @@ function verificarLogin($conexion, $tabla, $codigo, $contrasena, $tipo) {
 
     return false;
 }
-if (verificarLogin($conexion, "empleado", $codigo, $contrasena, "empleado")) {
-    header("Location: ../menu.php");
+
+// ADMIN
+if (verificarLogin($conexion, "administrador", $codigo, $contrasena, "admin")) {
+    header("Location: ../menu_admin.php");
     exit();
 }
+
+// EMPLEADO
+if (verificarLogin($conexion, "empleado", $codigo, $contrasena, "empleado")) {
+    header("Location: ../menu_empleado.php");
+    exit();
+}
+
+// DOCTOR
 if (verificarLogin($conexion, "doctor", $codigo, $contrasena, "doctor")) {
     header("Location: ../menu_doc.php");
     exit();
 }
 
+// SI NINGUNO COINCIDE
 header("Location: ../index.php?error=invalid");
 exit();
 
