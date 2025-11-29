@@ -197,7 +197,7 @@ if (!isset($_SESSION['usuario']) || !isset($_SESSION['codigo'])) {
                         <i class="fas fa-save"></i>
                         <span>Guardar Empleado</span>
                     </button>
-                    <a href="menu.php" class="btn btn-secondary">
+                    <a href="menu_admin.php" class="btn btn-secondary">
                         <i class="fas fa-arrow-left"></i>
                         <span>Volver al Menú</span>
                     </a>
