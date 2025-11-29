@@ -1,10 +1,11 @@
 <?php
 // Proteger la página - verificar sesión
 session_start();
-if (!isset($_SESSION['usuario']) || !isset($_SESSION['codigo'])) {
+if (!isset($_SESSION['usuario']) || !isset($_SESSION['codigo']) || !isset($_SESSION['tipo'])) {
     header("Location: index.php");
     exit();
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -147,7 +148,7 @@ if (!isset($_SESSION['usuario']) || !isset($_SESSION['codigo'])) {
             <i class="fas fa-save"></i>
             <span>Guardar Doctor</span>
           </button>
-          <a href="menu.php" class="btn btn-secondary">
+          <a href="menu_admin.php" class="btn btn-secondary">
             <i class="fas fa-arrow-left"></i>
             <span>Volver al Menú</span>
           </a>
