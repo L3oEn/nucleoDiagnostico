@@ -147,7 +147,7 @@ $resultado_doctores = pg_query($conexion, $query_doctores);
             <i class="fas fa-calendar-plus"></i>
             <span>Agendar Cita</span>
           </button>
-          <a href="menu.php" class="btn btn-secondary">
+          <a href="menu_empleado.php" class="btn btn-secondary">
             <i class="fas fa-arrow-left"></i>
             <span>Volver al Menú</span>
           </a>
