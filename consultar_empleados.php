@@ -62,7 +62,7 @@ $resultado = pg_query($conexion, "SELECT codigo, nombre, direccion, telefono, fe
     </div>
 
     <div class="btn-container">
-      <a href="menu.php" class="back-btn">
+      <a href="menu_admin.php" class="back-btn">
         <span>Volver al Menú</span>
       </a>
     </div>
