@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION['usuario']) || !isset($_SESSION['codigo'])) {
+    header("Location: index.php");
+    exit();
+}
 include("conecta.php");
 
 $query = "SELECT * FROM doctor ORDER BY codigo ASC";
